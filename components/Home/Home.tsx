@@ -1,3 +1,4 @@
+import AllProducts from "./AllProducts"
 import Category from "./Category"
 import TopPage from "./TopPage"
 
@@ -6,6 +7,7 @@ const Home = () => {
     <div className="w-[90%] mt-6 mx-auto">
       <TopPage/>
       <Category/>
+      <AllProducts/>
     </div>
   )
 }
