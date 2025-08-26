@@ -13,7 +13,7 @@ const ProductCard = ({product}:Props) => {
     const ratingArray = new Array(num).fill(0);
   return (
     <div className="p-4">
-        <Link href={`/product/product-details/${product.id}`}>
+        <Link href={`/Product/Product-details/${product.id}`}>
         <div className="w-[200px] h-[150px] ">
             <Image src={product.image} alt={product.title} width={100} height={100} className="w-[80%] h-[80%] object-contain"/>
         </div>
@@ -32,6 +32,7 @@ const ProductCard = ({product}:Props) => {
                     />
                 );
             })}
+            <span className="ml-2">{num}/5</span>
         </div>
         <div className="flex mt-2 items-center space-x-2">
             <p className="text-black text-base line-through font-semibold opacity-50">
