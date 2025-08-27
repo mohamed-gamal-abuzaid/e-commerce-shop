@@ -18,7 +18,11 @@ export async function getProduct(id:string) {
 }
 
 export async function getCategory(category:string) {
-    const CategoryRes= await fetch(`https://fakestoreapi.com/products/category/${category}`);
+const res = await fetch(`https://fakestoreapi.com/products`);
+const products = await res.json();
+const filtered = products.filter(
+    (item: { category: string }) => item.category === category
+  );
 
-    return CategoryRes.json();
+  return filtered;
 }

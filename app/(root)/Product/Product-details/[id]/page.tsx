@@ -2,14 +2,15 @@ import { getProduct,getCategory } from "@/Request/Requests";
 import { Product } from "@/typing";
 import Image from "next/image";
 import { StarIcon } from "lucide-react";
-import { Button } from "@/components/ui/button"
+import AddToCart from "./add-cart";
+import ProductCard from "@/components/Home/ProductCard";
 
 
 const ProductDetails = async ({params}:{params :{id:string}}) => {
 
-    const id=params.id;
+    const id= await params.id;
     const product:Product = await getProduct(id);
-    const category:Product[] = await getCategory(product.category);
+    const oneCategory:Product[] = await getCategory(product.category);
     const num = Math.round(product.rating.rate);
     const ratingArray = new Array(num).fill(0);
   return (
@@ -41,14 +42,19 @@ const ProductDetails = async ({params}:{params :{id:string}}) => {
             <div className="font-semibold my-4">
                 <div > Category : {product.category}</div>
                 <div> Tag : Mix Shop</div>
-                <div> SKU :564227632458</div>
+                <div> SKU :{Math.random()*500}</div>
             </div>
-            <Button size={"sm"} className="bg-gray-900 mb-4 text-lg p-1.5">
-                Add to Cart
-            </Button>
+            <AddToCart/>
             </div>
         </div>
-        
+        <div className="w-4/5 mt-16 mx-auto ">
+            <h1 className="items-center justify-center text-2xl text-black font-semibold "> Related Products</h1>
+            <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 ">
+                {oneCategory.map((product)=>{
+                    return <ProductCard key={product.id} product={product}/>
+                })}
+            </div>
+        </div>
     </div>
   )
 }
