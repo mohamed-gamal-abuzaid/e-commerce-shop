@@ -6,13 +6,11 @@ import AddToCart from "./add-cart";
 import ProductCard from "@/components/Home/ProductCard";
 
 
-interface ProductPageProps {
-  params: {
-    id: string;
-  };
+interface ProductPageParams {
+  id: string;
 }
 
-const ProductDetails = async ({ params }: ProductPageProps) => {
+const ProductDetails = async ({ params }: { params: ProductPageParams }) => {
     const id = params.id; 
     const product:Product = await getProduct(id);
     const oneCategory:Product[] = await getCategory(product.category);
