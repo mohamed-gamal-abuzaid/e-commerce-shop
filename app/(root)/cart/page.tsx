@@ -24,6 +24,7 @@ const Cart = () => {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleSuccess =(details:any)=>{
+        console.log("hiiiiiiiiiiiiiiiiii")
         router.push("/success");
         dispatch(clearCart());
     }
@@ -93,7 +94,7 @@ const Cart = () => {
                         )}
 
                         {user &&(
-                            <PayPalButton amount={totalPriceWithVat} onSuccess={handleSuccess}/>
+                            <PayPalButton amount={totalPriceWithVat} onSuccess={()=>handleSuccess}/>
                         )}
                     </div>
 

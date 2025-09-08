@@ -13,7 +13,7 @@ const PayPalButton = ({amount,onSuccess}:PaypalButtonProps) => {
   return (
     <PayPalScriptProvider options={{
         clientId:process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID!,
-        Currency:"USD",
+        currency:"USD",
     }}>
         <PayPalButtons fundingSource={FUNDING.PAYPAL}  createOrder={(data,actions)=>{
             return actions.order.create({
