@@ -6,9 +6,14 @@ import AddToCart from "./add-cart";
 import ProductCard from "@/components/Home/ProductCard";
 
 
-const ProductDetails = async ({params}:{params :{id:string}}) => {
+interface ProductPageProps {
+  params: {
+    id: string;
+  };
+}
 
-    const id= await params.id;
+const ProductDetails = async ({ params }: ProductPageProps) => {
+    const id = params.id; 
     const product:Product = await getProduct(id);
     const oneCategory:Product[] = await getCategory(product.category);
     const num = Math.round(product.rating.rate);
