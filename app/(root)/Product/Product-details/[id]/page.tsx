@@ -10,8 +10,8 @@ interface ProductPageParams {
   id: string;
 }
 
-const ProductDetails = async ({ params }: { params: ProductPageParams }) => {
-    const id = params.id; 
+const ProductDetails = async ({ params }: { params: Promise<ProductPageParams> }) => {
+    const { id } = await params; 
     const product:Product = await getProduct(id);
     const oneCategory:Product[] = await getCategory(product.category);
     const num = Math.round(product.rating.rate);
@@ -26,7 +26,7 @@ const ProductDetails = async ({ params }: { params: ProductPageParams }) => {
             <h1 className="lg:text-3xl text-2xl text-black font-bold">{product.title}</h1>
             <div className="mt-2 flex items-center space-x-2">
                 <div className="flex items-center">
-                    {ratingArray.map((star)=>{
+                    {ratingArray.map((_star)=>{
                         return(
                             <StarIcon
                             key={Math.random()*1000}

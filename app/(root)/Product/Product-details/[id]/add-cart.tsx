@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button"
-import { addItem, CartItem } from "@/store/cartSlice";
+import { addItem } from "@/store/cartSlice";
 import { Product } from "@/typing";
 import { useDispatch } from "react-redux";
 
