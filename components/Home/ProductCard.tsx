@@ -32,7 +32,7 @@ const ProductCard = ({product}:Props) => {
         <h1 className="text-lg cursor-pointer hover:text-blue-900 transition-all hover:underline sm:w-full sm:truncate mt-2 text-black font-semibold">{product.title}</h1>
         </Link>
         <div className="flex items-center">
-            {ratingArray.map((star)=>{
+            {ratingArray.map(()=>{
                 return(
                     <StarIcon
                     key={Math.random()*1000}
