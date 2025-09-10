@@ -23,8 +23,7 @@ const Cart = () => {
     const {user} =useUser();
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const handleSuccess =(details:any)=>{
-        console.log("hiiiiiiiiiiiiiiiiii")
+    const handleSuccess =()=>{
         router.push("/success");
         dispatch(clearCart());
     }
