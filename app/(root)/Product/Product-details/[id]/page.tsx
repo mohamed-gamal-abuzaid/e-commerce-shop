@@ -5,14 +5,12 @@ import { StarIcon } from "lucide-react";
 import AddToCart from "./add-cart";
 import ProductCard from "@/components/Home/ProductCard";
 
-type ProductDetailsPageProps = {
-  params: {
-    id: string;
-  };
-};
+interface ProductDetailsPageProps {
+  params: Promise<{ id: string }>; 
+}
 
-export default async function ProductDetails({ params }: ProductDetailsPageProps) {
-  const id = params.id;
+export default async function ProductDetailsPage({ params }: ProductDetailsPageProps) {
+  const { id } = await params;
   const product: Product = await getProduct(id);
   const oneCategory: Product[] = await getCategory(product.category);
 
